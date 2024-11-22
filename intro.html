@@ -5,12 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Inmobiliaria Soluciones Hogar</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Estilos adicionales para el filtro */
+    #filter-container {
+      font-family: Arial, sans-serif;
+      margin: 20px 0;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+    }
+
+    #property-filter {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    #property-list {
+      margin-top: 20px;
+    }
+
+    .property-item {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+  </style>
 </head>
 <body>
   <header>
     <div class="container">
       <h1>Inmobiliaria Soluciones Hogar</h1>
-      <img src="IMG.png" alt="logo de mi inmobiliaria">
       <nav>
         <ul>
           <li><a href="#home">Inicio</a></li>
@@ -38,20 +64,31 @@
 
     <section id="properties">
       <h2>Propiedades destacadas</h2>
-      <div class="properties-container">
-        <div class="property-card">
-          <img src="house1.jpg" alt="Casa moderna">
-          <h3>Casa moderna en el centro</h3>
-          <p>Precio: $300,000</p>
-          <a href="#">Ver detalles</a>
+
+      <!-- Filtro de propiedades -->
+      <div id="filter-container">
+        <h3>Filtrar Propiedades</h3>
+        <form id="property-filter">
+          <label for="type">Tipo de Propiedad:</label>
+          <select id="type" name="type">
+            <option value="all">Todos</option>
+            <option value="apartment">Apartamento</option>
+            <option value="house">Casa</option>
+          </select>
+
+          <label for="purpose">Propósito:</label>
+          <select id="purpose" name="purpose">
+            <option value="all">Todos</option>
+            <option value="buy">Compra</option>
+            <option value="rent">Alquiler</option>
+          </select>
+
+          <button type="button" id="filter-button">Filtrar</button>
+        </form>
+
+        <div id="property-list">
+          <!-- Aquí se mostrarán las propiedades filtradas -->
         </div>
-        <div class="property-card">
-          <img src="apartment1.jpg" alt="Apartamento">
-          <h3>Apartamento con vista al mar</h3>
-          <p>Precio: $1,200/mes</p>
-          <a href="#">Ver detalles</a>
-        </div>
-        <!-- Añade más propiedades aquí -->
       </div>
     </section>
 
@@ -69,5 +106,54 @@
   <footer>
     <p>© 2024 Inmobiliaria Soluciones Hogar. Todos los derechos reservados.</p>
   </footer>
+
+  <script>
+    // Datos simulados de propiedades
+    const properties = [
+      { id: 1, type: "apartment", purpose: "buy", name: "Apartamento en la ciudad" },
+      { id: 2, type: "house", purpose: "rent", name: "Casa en las afueras" },
+      { id: 3, type: "apartment", purpose: "rent", name: "Apartamento con vista al mar" },
+      { id: 4, type: "house", purpose: "buy", name: "Casa moderna en el centro" },
+    ];
+
+    // Función para mostrar propiedades
+    function displayProperties(filteredProperties) {
+      const propertyList = document.getElementById("property-list");
+      propertyList.innerHTML = ""; // Limpiar resultados previos
+
+      if (filteredProperties.length === 0) {
+        propertyList.innerHTML = "<p>No se encontraron propiedades.</p>";
+        return;
+      }
+
+      filteredProperties.forEach((property) => {
+        const propertyItem = document.createElement("div");
+        propertyItem.className = "property-item";
+        propertyItem.textContent = property.name;
+        propertyList.appendChild(propertyItem);
+      });
+    }
+
+    // Función para filtrar propiedades
+    function filterProperties() {
+      const type = document.getElementById("type").value;
+      const purpose = document.getElementById("purpose").value;
+
+      const filteredProperties = properties.filter((property) => {
+        return (
+          (type === "all" || property.type === type) &&
+          (purpose === "all" || property.purpose === purpose)
+        );
+      });
+
+      displayProperties(filteredProperties);
+    }
+
+    // Evento para botón de filtrar
+    document.getElementById("filter-button").addEventListener("click", filterProperties);
+
+    // Mostrar todas las propiedades al cargar la página
+    displayProperties(properties);
+  </script>
 </body>
 </html>
