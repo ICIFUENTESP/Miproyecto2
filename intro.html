@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inmobiliaria Soluciones Hogar</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Inmobiliaria Soluciones Hogar</h1>
+      <nav>
+        <ul>
+          <li><a href="#home">Inicio</a></li>
+          <li><a href="#properties">Propiedades</a></li>
+          <li><a href="#contact">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section id="home" class="hero">
+      <h2>Encuentra tu hogar ideal</h2>
+      <p>Venta y alquiler de casas y apartamentos en las mejores ubicaciones.</p>
+      <form class="search-form">
+        <input type="text" placeholder="Buscar por ciudad o código postal" required>
+        <select>
+          <option value="">Tipo de propiedad</option>
+          <option value="venta">Venta</option>
+          <option value="alquiler">Alquiler</option>
+        </select>
+        <button type="submit">Buscar</button>
+      </form>
+    </section>
+
+    <section id="properties">
+      <h2>Propiedades destacadas</h2>
+      <div class="properties-container">
+        <div class="property-card">
+          <img src="house1.jpg" alt="Casa moderna">
+          <h3>Casa moderna en el centro</h3>
+          <p>Precio: $300,000</p>
+          <a href="#">Ver detalles</a>
+        </div>
+        <div class="property-card">
+          <img src="apartment1.jpg" alt="Apartamento">
+          <h3>Apartamento con vista al mar</h3>
+          <p>Precio: $1,200/mes</p>
+          <a href="#">Ver detalles</a>
+        </div>
+        <!-- Añade más propiedades aquí -->
+      </div>
+    </section>
+
+    <section id="contact">
+      <h2>Contacto</h2>
+      <form>
+        <input type="text" placeholder="Nombre completo" required>
+        <input type="email" placeholder="Correo electrónico" required>
+        <textarea placeholder="Escribe tu mensaje" required></textarea>
+        <button type="submit">Enviar</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2024 Inmobiliaria Soluciones Hogar. Todos los derechos reservados.</p>
+  </footer>
+</body>
+</html>
